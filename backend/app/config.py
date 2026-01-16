@@ -21,8 +21,9 @@ class Settings(BaseSettings):
     google_api_key: str = ""
     deepseek_api_key: str = ""
     
-    # App Settings
-    cors_origins: str = "http://localhost:3000"
+    # App Settings - support both CORS_ORIGIN and CORS_ORIGINS
+    cors_origins: str = ""
+    cors_origin: str = ""  # Alternative name
     debug: bool = False
     
     class Config:
@@ -32,7 +33,14 @@ class Settings(BaseSettings):
     @property
     def cors_origins_list(self) -> list[str]:
         """Parse CORS origins from comma-separated string."""
-        return [origin.strip() for origin in self.cors_origins.split(",")]
+        # Use whichever is set: cors_origins or cors_origin
+        origins_str = self.cors_origins or self.cors_origin or "http://localhost:3000"
+        origins = [origin.strip() for origin in origins_str.split(",") if origin.strip()]
+        # Always include common development origins
+        default_origins = ["http://localhost:3000", "http://localhost:3001"]
+        all_origins = list(set(origins + default_origins))
+        print(f"🔒 CORS origins configured: {all_origins}")
+        return all_origins
     
     @property
     def use_mock_db(self) -> bool:

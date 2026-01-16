@@ -14,7 +14,9 @@ from app.routers import battles, leaderboard, models
 async def lifespan(app: FastAPI):
     """Application lifespan events."""
     # Startup
+    settings = get_settings()
     print("🧪 Chemistry Arena API starting up...")
+    print(f"🔒 CORS allowed origins: {settings.cors_origins_list}")
     yield
     # Shutdown
     print("🧪 Chemistry Arena API shutting down...")
