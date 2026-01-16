@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-space-grotesk: 'Space Grotesk', system-ui, sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background: #0a0e14;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1f2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00d4aa;
+}
+
+/* Glow effects */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 212, 170, 0.3),
+              0 0 40px rgba(0, 212, 170, 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 212, 170, 0.5),
+               0 0 40px rgba(0, 212, 170, 0.3);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(26, 31, 46, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 55, 72, 0.5);
+}
+
+/* Gradient borders */
+.gradient-border {
+  position: relative;
+  background: #1a1f2e;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #00d4aa, #6366f1);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Animated background patterns */
+.bg-molecule-animated {
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+  animation: pulse-bg 8s ease-in-out infinite;
+}
+
+@keyframes pulse-bg {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Hexagon pattern overlay */
+.hex-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300d4aa' fill-opacity='0.02'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Atomic orbital animation */
+.orbital {
+  position: absolute;
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  border-radius: 50%;
+  animation: rotate-orbital 20s linear infinite;
+}
+
+.orbital::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00d4aa;
+  border-radius: 50%;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px #00d4aa;
+}
+
+@keyframes rotate-orbital {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Chart styling */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(45, 55, 72, 0.5);
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+/* Category pills */
+.category-pill {
+  @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-300;
+  @apply border border-transparent hover:border-chem-primary/30;
+}
+
+.category-pill.active {
+  @apply bg-chem-primary/20 text-chem-primary border-chem-primary/50;
+}
+
+/* Table rows */
+.leaderboard-row {
+  @apply transition-all duration-200;
+}
+
+.leaderboard-row:hover {
+  @apply bg-chem-surface/50;
+  transform: translateX(4px);
+}
+
+/* Rank badges */
+.rank-badge {
+  @apply w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm;
+}
+
+.rank-1 { @apply bg-gradient-to-br from-yellow-400 to-amber-600 text-black; }
+.rank-2 { @apply bg-gradient-to-br from-gray-300 to-gray-500 text-black; }
+.rank-3 { @apply bg-gradient-to-br from-orange-400 to-orange-700 text-black; }
+
+/* Model logos */
+.model-logo {
+  @apply w-8 h-8 rounded-lg p-1 bg-white/10 flex items-center justify-center;
+}
+
+/* Progress bars */
+.progress-bar {
+  @apply h-2 rounded-full bg-chem-border overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full rounded-full transition-all duration-500;
+  background: linear-gradient(90deg, #00d4aa, #6366f1);
+}
+
+/* Battle cards */
+.battle-card {
+  @apply relative p-6 rounded-2xl transition-all duration-300;
+  background: linear-gradient(135deg, rgba(26, 31, 46, 0.9), rgba(26, 31, 46, 0.7));
+  border: 1px solid rgba(45, 55, 72, 0.5);
+}
+
+.battle-card:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.battle-card.selected {
+  border-color: #00d4aa;
+  box-shadow: 0 0 30px rgba(0, 212, 170, 0.2);
+}
+
+/* Floating elements */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-animation-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  @apply bg-chem-primary text-chem-dark hover:bg-chem-glow;
+  @apply shadow-lg shadow-chem-primary/20 hover:shadow-chem-primary/40;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  @apply bg-chem-surface border border-chem-border text-white;
+  @apply hover:bg-chem-border hover:border-chem-primary/50;
+}
+
+/* Navigation active state */
+.nav-link {
+  @apply relative px-4 py-2 text-chem-muted hover:text-white transition-colors duration-200;
+}
+
+.nav-link.active {
+  @apply text-chem-primary;
+}
+
+.nav-link.active::after {
+  content: '';
+  @apply absolute bottom-0 left-0 right-0 h-0.5 bg-chem-primary rounded-full;
+}
+
+/* Chemical formula styling */
+.chem-formula {
+  font-family: var(--font-jetbrains);
+  @apply text-chem-primary;
+}
+
+.chem-formula sub {
+  font-size: 0.7em;
+  vertical-align: sub;
+}
+
+.chem-formula sup {
+  font-size: 0.7em;
+  vertical-align: super;
+}
