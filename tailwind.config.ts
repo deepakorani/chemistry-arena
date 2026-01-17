@@ -11,16 +11,16 @@ const config: Config = {
       colors: {
         // Chemistry-inspired palette
         'chem': {
-          'dark': '#0a0e14',
-          'darker': '#060810',
-          'navy': '#0d1321',
-          'primary': '#00d4aa',
-          'secondary': '#6366f1',
-          'accent': '#f59e0b',
-          'glow': '#00ffcc',
-          'muted': '#4a5568',
-          'surface': '#1a1f2e',
-          'border': '#2d3748',
+          'dark': '#0f172a',       // Slate - more refined
+          'darker': '#020617',     // Deeper slate  
+          'navy': '#1e293b',
+          'primary': '#10b981',    // Emerald - scientific, trustworthy
+          'secondary': '#3b82f6',  // Blue - classic scientific
+          'accent': '#f59e0b',     // Amber for gold medals
+          'glow': '#34d399',       // Softer emerald hover
+          'muted': '#94a3b8',      // Lighter muted (better readability)
+          'surface': '#1e293b',    // Slate surface
+          'border': '#334155',     // Slate border
         },
         // Element colors for different categories
         'element': {
@@ -39,8 +39,8 @@ const config: Config = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'grid-pattern': 'linear-gradient(to right, rgba(0, 212, 170, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 212, 170, 0.03) 1px, transparent 1px)',
-        'molecule-pattern': 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2300d4aa\' fill-opacity=\'0.03\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'3\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+        'grid-pattern': 'linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px)',
+        'molecule-pattern': 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2310b981\' fill-opacity=\'0.03\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'3\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
       },
       animation: {
         'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
